@@ -1,0 +1,13 @@
+{
+  "name": "tepbyte-markdown",
+  "version": "0.1.0",
+  "scripts": {
+    "lint": "eslint ."
+  },
+  "devDependencies": {
+    "@typescript-eslint/eslint-plugin": "^5.33.0",
+    "@typescript-eslint/parser": "^5.33.0",
+    "eslint": "^8.21.0",
+    "eslint-config-prettier": "^8.5.0"
+  }
+}
