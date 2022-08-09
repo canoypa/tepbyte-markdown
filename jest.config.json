@@ -1,5 +1,6 @@
 {
   "moduleFileExtensions": ["ts", "js"],
+  "transformIgnorePatterns": [],
   "transform": {
     "^.+\\.(t|j)s$": [
       "@swc/jest",
