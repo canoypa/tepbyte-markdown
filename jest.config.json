@@ -1,12 +1,13 @@
 {
   "moduleFileExtensions": ["ts", "js"],
   "transform": {
-    "^.+\\.ts$": "ts-jest"
-  },
-  "globals": {
-    "ts-jest": {
-      "tsconfig": "tsconfig.json"
-    }
+    "^.+\\.(t|j)s$": [
+      "@swc/jest",
+      {
+        "sourceMaps": true,
+        "module": { "type": "commonjs" }
+      }
+    ]
   },
   "testMatch": ["**/*.test.ts"]
 }
