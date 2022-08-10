@@ -1,8 +1,12 @@
-export const root = ({ children }: { children: any[] }) => {
-  return expect.objectContaining({
+type RootProps = {
+  children: any[];
+};
+export const root = ({ children }: RootProps) => {
+  return {
     type: "root",
-    children: expect.arrayContaining(children),
-  });
+    children,
+    position: expect.anything(),
+  };
 };
 
 type HeadingProps = {
@@ -10,16 +14,19 @@ type HeadingProps = {
   children: any[];
 };
 export const heading = ({ depth, children }: HeadingProps) => {
-  return expect.objectContaining({
+  return {
     type: "heading",
     depth,
-    children: expect.arrayContaining(children),
-  });
+    children,
+    position: expect.anything(),
+  };
 };
 
-export const text = (value: string) => {
-  return expect.objectContaining({
+type TextProps = string;
+export const text = (value: TextProps) => {
+  return {
     type: "text",
     value,
-  });
+    position: expect.anything(),
+  };
 };
