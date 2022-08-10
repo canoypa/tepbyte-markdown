@@ -1,6 +1,9 @@
 {
   "name": "tepbyte-markdown",
   "version": "0.1.0",
+  "main": "dist/index.cjs.js",
+  "module": "dist/index.esm.js",
+  "types": "dist/index.d.ts",
   "scripts": {
     "lint": "eslint .",
     "test": "jest"
