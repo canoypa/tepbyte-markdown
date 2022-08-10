@@ -9,6 +9,17 @@ export const root = ({ children }: RootProps) => {
   };
 };
 
+type ParagraphProps = {
+  children: any[];
+};
+export const paragraph = ({ children }: ParagraphProps) => {
+  return {
+    type: "paragraph",
+    children,
+    position: expect.anything(),
+  };
+};
+
 type HeadingProps = {
   depth: number;
   children: any[];
@@ -27,6 +38,13 @@ export const text = (value: TextProps) => {
   return {
     type: "text",
     value,
+    position: expect.anything(),
+  };
+};
+
+export const Break = () => {
+  return {
+    type: "break",
     position: expect.anything(),
   };
 };
