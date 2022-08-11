@@ -1,7 +1,11 @@
 {
   "name": "tepbyte-markdown",
   "version": "0.1.0",
+  "main": "dist/index.cjs.js",
+  "module": "dist/index.esm.js",
+  "types": "dist/index.d.ts",
   "scripts": {
+    "build": "rollup --config rollup.config.js",
     "lint": "eslint .",
     "test": "jest"
   },
@@ -11,6 +15,8 @@
     "unist-util-inspect": "^7.0.1"
   },
   "devDependencies": {
+    "@rollup/plugin-commonjs": "^22.0.2",
+    "@rollup/plugin-node-resolve": "^13.3.0",
     "@swc/core": "^1.2.224",
     "@swc/jest": "^0.2.22",
     "@types/jest": "^28.1.6",
@@ -20,6 +26,9 @@
     "eslint": "^8.21.0",
     "eslint-config-prettier": "^8.5.0",
     "jest": "^28.1.3",
+    "rollup": "^2.77.2",
+    "rollup-plugin-dts": "^4.2.2",
+    "rollup-plugin-swc3": "^0.3.0",
     "typescript": "^4.7.4"
   }
 }
