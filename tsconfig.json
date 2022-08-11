@@ -1,7 +1,7 @@
 {
   "compilerOptions": {
-    "target": "ESNext",
-    "module": "NodeNext",
+    "target": "ES2022",
+    "module": "ES2022",
 
     "allowJs": true,
 
@@ -9,5 +9,6 @@
 
     "moduleResolution": "Node",
     "esModuleInterop": true
-  }
+  },
+  "include": ["src/**/*.ts"]
 }
