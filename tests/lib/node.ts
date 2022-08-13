@@ -5,7 +5,6 @@ export const root = ({ children }: RootProps) => {
   return {
     type: "root",
     children,
-    position: expect.anything(),
   };
 };
 
@@ -16,7 +15,6 @@ export const paragraph = ({ children }: ParagraphProps) => {
   return {
     type: "paragraph",
     children,
-    position: expect.anything(),
   };
 };
 
@@ -29,7 +27,6 @@ export const heading = ({ depth, children }: HeadingProps) => {
     type: "heading",
     depth,
     children,
-    position: expect.anything(),
   };
 };
 
@@ -40,7 +37,6 @@ export const Emphasis = ({ children }: EmphasisProps) => {
   return {
     type: "emphasis",
     children,
-    position: expect.anything(),
   };
 };
 
@@ -51,7 +47,6 @@ export const Strong = ({ children }: StrongProps) => {
   return {
     type: "strong",
     children,
-    position: expect.anything(),
   };
 };
 
@@ -60,13 +55,11 @@ export const text = (value: TextProps) => {
   return {
     type: "text",
     value,
-    position: expect.anything(),
   };
 };
 
 export const Break = () => {
   return {
     type: "break",
-    position: expect.anything(),
   };
 };
