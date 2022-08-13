@@ -45,8 +45,7 @@ TEXT`;
 
     const result = await parseMarkdown(source);
 
-    // FIXME: need remark-break
-    expect(result).not.toEqual(
+    expect(result).toEqual(
       root({
         children: [
           paragraph({

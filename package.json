@@ -10,6 +10,7 @@
     "test": "jest"
   },
   "dependencies": {
+    "remark-breaks": "^3.0.2",
     "remark-parse": "^10.0.1",
     "unified": "^10.1.2",
     "unist-util-inspect": "^7.0.1",
