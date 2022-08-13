@@ -33,6 +33,28 @@ export const heading = ({ depth, children }: HeadingProps) => {
   };
 };
 
+type EmphasisProps = {
+  children: any[];
+};
+export const Emphasis = ({ children }: EmphasisProps) => {
+  return {
+    type: "emphasis",
+    children,
+    position: expect.anything(),
+  };
+};
+
+type StrongProps = {
+  children: any[];
+};
+export const Strong = ({ children }: StrongProps) => {
+  return {
+    type: "strong",
+    children,
+    position: expect.anything(),
+  };
+};
+
 type TextProps = string;
 export const text = (value: TextProps) => {
   return {
