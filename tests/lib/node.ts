@@ -1,8 +1,18 @@
+import {
+  Break as BreakNode,
+  Emphasis as EmphasisNode,
+  Heading as HeadingNode,
+  Paragraph as ParagraphNode,
+  Root as RootNode,
+  Strong as StrongNode,
+  Text as TextNode,
+} from "mdast";
+
 type RootProps = {
   data?: any;
   children: any[];
 };
-export const Root = ({ data, children }: RootProps) => {
+export const Root = ({ data, children }: RootProps): RootNode => {
   return {
     type: "root",
     data: data,
@@ -13,7 +23,7 @@ export const Root = ({ data, children }: RootProps) => {
 type ParagraphProps = {
   children: any[];
 };
-export const Paragraph = ({ children }: ParagraphProps) => {
+export const Paragraph = ({ children }: ParagraphProps): ParagraphNode => {
   return {
     type: "paragraph",
     children,
@@ -21,10 +31,10 @@ export const Paragraph = ({ children }: ParagraphProps) => {
 };
 
 type HeadingProps = {
-  depth: number;
+  depth: 1 | 2 | 3 | 4 | 5 | 6;
   children: any[];
 };
-export const Heading = ({ depth, children }: HeadingProps) => {
+export const Heading = ({ depth, children }: HeadingProps): HeadingNode => {
   return {
     type: "heading",
     depth,
@@ -35,7 +45,7 @@ export const Heading = ({ depth, children }: HeadingProps) => {
 type EmphasisProps = {
   children: any[];
 };
-export const Emphasis = ({ children }: EmphasisProps) => {
+export const Emphasis = ({ children }: EmphasisProps): EmphasisNode => {
   return {
     type: "emphasis",
     children,
@@ -45,7 +55,7 @@ export const Emphasis = ({ children }: EmphasisProps) => {
 type StrongProps = {
   children: any[];
 };
-export const Strong = ({ children }: StrongProps) => {
+export const Strong = ({ children }: StrongProps): StrongNode => {
   return {
     type: "strong",
     children,
@@ -53,14 +63,14 @@ export const Strong = ({ children }: StrongProps) => {
 };
 
 type TextProps = string;
-export const Text = (value: TextProps) => {
+export const Text = (value: TextProps): TextNode => {
   return {
     type: "text",
     value,
   };
 };
 
-export const Break = () => {
+export const Break = (): BreakNode => {
   return {
     type: "break",
   };
