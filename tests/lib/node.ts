@@ -1,9 +1,11 @@
 type RootProps = {
+  data?: any;
   children: any[];
 };
-export const root = ({ children }: RootProps) => {
+export const root = ({ data, children }: RootProps) => {
   return {
     type: "root",
+    data: data,
     children,
   };
 };
