@@ -14,10 +14,10 @@ _ITALIC_`;
       Root({
         children: [
           Paragraph({
-            children: [Emphasis({ children: [Text("ITALIC")] })],
+            children: [Emphasis({ children: [Text({ value: "ITALIC" })] })],
           }),
           Paragraph({
-            children: [Emphasis({ children: [Text("ITALIC")] })],
+            children: [Emphasis({ children: [Text({ value: "ITALIC" })] })],
           }),
         ],
       })
@@ -36,10 +36,10 @@ __BOLD__`;
       Root({
         children: [
           Paragraph({
-            children: [Strong({ children: [Text("BOLD")] })],
+            children: [Strong({ children: [Text({ value: "BOLD" })] })],
           }),
           Paragraph({
-            children: [Strong({ children: [Text("BOLD")] })],
+            children: [Strong({ children: [Text({ value: "BOLD" })] })],
           }),
         ],
       })
@@ -60,14 +60,18 @@ ___BOLD ITALIC___`;
           Paragraph({
             children: [
               Emphasis({
-                children: [Strong({ children: [Text("BOLD ITALIC")] })],
+                children: [
+                  Strong({ children: [Text({ value: "BOLD ITALIC" })] }),
+                ],
               }),
             ],
           }),
           Paragraph({
             children: [
               Emphasis({
-                children: [Strong({ children: [Text("BOLD ITALIC")] })],
+                children: [
+                  Strong({ children: [Text({ value: "BOLD ITALIC" })] }),
+                ],
               }),
             ],
           }),

@@ -15,10 +15,10 @@ describe("heading", () => {
 
     expect(result).toEqual(
       Root({
-        children: [1, 2, 3, 4, 5, 6].map((depth) =>
+        children: ([1, 2, 3, 4, 5, 6] as const).map((depth) =>
           Heading({
             depth,
-            children: [Text("HEADING")],
+            children: [Text({ value: "HEADING" })],
           })
         ),
       })

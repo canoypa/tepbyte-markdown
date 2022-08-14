@@ -13,8 +13,8 @@ TEXT`;
     expect(result).toEqual(
       Root({
         children: [
-          Paragraph({ children: [Text("TEXT")] }),
-          Paragraph({ children: [Text("TEXT")] }),
+          Paragraph({ children: [Text({ value: "TEXT" })] }),
+          Paragraph({ children: [Text({ value: "TEXT" })] }),
         ],
       })
     );
@@ -31,7 +31,11 @@ TEXT`;
       Root({
         children: [
           Paragraph({
-            children: [Text("TEXT"), Break(), Text("TEXT")],
+            children: [
+              Text({ value: "TEXT" }),
+              Break(),
+              Text({ value: "TEXT" }),
+            ],
           }),
         ],
       })
@@ -49,7 +53,11 @@ TEXT`;
       Root({
         children: [
           Paragraph({
-            children: [Text("TEXT"), Break(), Text("TEXT")],
+            children: [
+              Text({ value: "TEXT" }),
+              Break(),
+              Text({ value: "TEXT" }),
+            ],
           }),
         ],
       })

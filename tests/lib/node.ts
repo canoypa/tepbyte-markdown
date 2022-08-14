@@ -62,8 +62,10 @@ export const Strong = ({ children }: StrongProps): StrongNode => {
   };
 };
 
-type TextProps = string;
-export const Text = (value: TextProps): TextNode => {
+type TextProps = {
+  value: string;
+};
+export const Text = ({ value }: TextProps): TextNode => {
   return {
     type: "text",
     value,

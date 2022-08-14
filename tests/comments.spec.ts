@@ -11,7 +11,7 @@ describe("comments", () => {
       Root({
         children: [
           Paragraph({
-            children: [Text("Hello"), Text("World")],
+            children: [Text({ value: "Hello" }), Text({ value: "World" })],
           }),
         ],
       })
@@ -31,8 +31,8 @@ World`;
     expect(result).toEqual(
       Root({
         children: [
-          Paragraph({ children: [Text("Hello")] }),
-          Paragraph({ children: [Text("World")] }),
+          Paragraph({ children: [Text({ value: "Hello" })] }),
+          Paragraph({ children: [Text({ value: "World" })] }),
         ],
       })
     );
