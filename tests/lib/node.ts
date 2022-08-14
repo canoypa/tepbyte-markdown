@@ -7,12 +7,11 @@ import {
   Strong as StrongNode,
   Text as TextNode,
 } from "mdast";
+import { Node } from "unist";
 
-type RootProps = {
-  data?: any;
-  children: any[];
-};
-export const Root = ({ data, children }: RootProps): RootNode => {
+type TestNodeBuilder<N extends Node> = (props: Omit<N, "type">) => N;
+
+export const Root: TestNodeBuilder<RootNode> = ({ data, children }) => {
   return {
     type: "root",
     data: data,
@@ -20,21 +19,14 @@ export const Root = ({ data, children }: RootProps): RootNode => {
   };
 };
 
-type ParagraphProps = {
-  children: any[];
-};
-export const Paragraph = ({ children }: ParagraphProps): ParagraphNode => {
+export const Paragraph: TestNodeBuilder<ParagraphNode> = ({ children }) => {
   return {
     type: "paragraph",
     children,
   };
 };
 
-type HeadingProps = {
-  depth: 1 | 2 | 3 | 4 | 5 | 6;
-  children: any[];
-};
-export const Heading = ({ depth, children }: HeadingProps): HeadingNode => {
+export const Heading: TestNodeBuilder<HeadingNode> = ({ depth, children }) => {
   return {
     type: "heading",
     depth,
@@ -42,37 +34,28 @@ export const Heading = ({ depth, children }: HeadingProps): HeadingNode => {
   };
 };
 
-type EmphasisProps = {
-  children: any[];
-};
-export const Emphasis = ({ children }: EmphasisProps): EmphasisNode => {
+export const Emphasis: TestNodeBuilder<EmphasisNode> = ({ children }) => {
   return {
     type: "emphasis",
     children,
   };
 };
 
-type StrongProps = {
-  children: any[];
-};
-export const Strong = ({ children }: StrongProps): StrongNode => {
+export const Strong: TestNodeBuilder<StrongNode> = ({ children }) => {
   return {
     type: "strong",
     children,
   };
 };
 
-type TextProps = {
-  value: string;
-};
-export const Text = ({ value }: TextProps): TextNode => {
+export const Text: TestNodeBuilder<TextNode> = ({ value }) => {
   return {
     type: "text",
     value,
   };
 };
 
-export const Break = (): BreakNode => {
+export const Break: TestNodeBuilder<BreakNode> = () => {
   return {
     type: "break",
   };
