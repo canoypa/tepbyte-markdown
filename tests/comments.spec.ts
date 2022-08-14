@@ -1,5 +1,5 @@
 import parseMarkdown from "../src";
-import { paragraph, root, text } from "./lib/node";
+import { Paragraph, Root, Text } from "./lib/node";
 
 describe("comments", () => {
   it("one line", async () => {
@@ -8,10 +8,10 @@ describe("comments", () => {
     const result = await parseMarkdown(source);
 
     expect(result).toEqual(
-      root({
+      Root({
         children: [
-          paragraph({
-            children: [text("Hello"), text("World")],
+          Paragraph({
+            children: [Text("Hello"), Text("World")],
           }),
         ],
       })
@@ -29,10 +29,10 @@ World`;
     const result = await parseMarkdown(source);
 
     expect(result).toEqual(
-      root({
+      Root({
         children: [
-          paragraph({ children: [text("Hello")] }),
-          paragraph({ children: [text("World")] }),
+          Paragraph({ children: [Text("Hello")] }),
+          Paragraph({ children: [Text("World")] }),
         ],
       })
     );

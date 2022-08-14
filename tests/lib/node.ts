@@ -2,7 +2,7 @@ type RootProps = {
   data?: any;
   children: any[];
 };
-export const root = ({ data, children }: RootProps) => {
+export const Root = ({ data, children }: RootProps) => {
   return {
     type: "root",
     data: data,
@@ -13,7 +13,7 @@ export const root = ({ data, children }: RootProps) => {
 type ParagraphProps = {
   children: any[];
 };
-export const paragraph = ({ children }: ParagraphProps) => {
+export const Paragraph = ({ children }: ParagraphProps) => {
   return {
     type: "paragraph",
     children,
@@ -24,7 +24,7 @@ type HeadingProps = {
   depth: number;
   children: any[];
 };
-export const heading = ({ depth, children }: HeadingProps) => {
+export const Heading = ({ depth, children }: HeadingProps) => {
   return {
     type: "heading",
     depth,
@@ -53,7 +53,7 @@ export const Strong = ({ children }: StrongProps) => {
 };
 
 type TextProps = string;
-export const text = (value: TextProps) => {
+export const Text = (value: TextProps) => {
   return {
     type: "text",
     value,
