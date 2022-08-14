@@ -1,41 +1,36 @@
-import {
-  Break as BreakNode,
-  Emphasis as EmphasisNode,
-  Heading as HeadingNode,
-  Paragraph as ParagraphNode,
-  Root as RootNode,
-  Strong as StrongNode,
-  Text as TextNode,
-} from "mdast";
+import type mdast from "mdast";
 import { Node } from "unist";
 import { u } from "unist-builder";
 
 type TestNodeBuilder<N extends Node> = (props: Omit<N, "type">) => N;
 
-export const Root: TestNodeBuilder<RootNode> = ({ data, children }) => {
+export const Root: TestNodeBuilder<mdast.Root> = ({ data, children }) => {
   return u("root", { data }, children);
 };
 
-export const Paragraph: TestNodeBuilder<ParagraphNode> = ({ children }) => {
+export const Paragraph: TestNodeBuilder<mdast.Paragraph> = ({ children }) => {
   return u("paragraph", children);
 };
 
-export const Heading: TestNodeBuilder<HeadingNode> = ({ depth, children }) => {
+export const Heading: TestNodeBuilder<mdast.Heading> = ({
+  depth,
+  children,
+}) => {
   return u("heading", { depth }, children);
 };
 
-export const Emphasis: TestNodeBuilder<EmphasisNode> = ({ children }) => {
+export const Emphasis: TestNodeBuilder<mdast.Emphasis> = ({ children }) => {
   return u("emphasis", children);
 };
 
-export const Strong: TestNodeBuilder<StrongNode> = ({ children }) => {
+export const Strong: TestNodeBuilder<mdast.Strong> = ({ children }) => {
   return u("strong", children);
 };
 
-export const Text: TestNodeBuilder<TextNode> = ({ value }) => {
+export const Text: TestNodeBuilder<mdast.Text> = ({ value }) => {
   return u("text", value);
 };
 
-export const Break: TestNodeBuilder<BreakNode> = () => {
+export const Break: TestNodeBuilder<mdast.Break> = () => {
   return u("break");
 };
