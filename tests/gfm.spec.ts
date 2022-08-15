@@ -1,6 +1,14 @@
 import { inspect } from "unist-util-inspect";
 import parseMarkdown from "../src";
-import { Break, Link, Paragraph, Root, Text } from "./lib/node";
+import {
+  Break,
+  FootnoteDefinition,
+  FootnoteReference,
+  Link,
+  Paragraph,
+  Root,
+  Text,
+} from "./lib/node";
 
 describe("gfm", () => {
   it("autolink", async () => {
@@ -28,6 +36,30 @@ www.example.com
                 children: [Text({ value: "www.example.com" })],
               }),
             ],
+          }),
+        ],
+      })
+    );
+  });
+
+  it("footnote", async () => {
+    const source = `
+[^1]
+[^1]: FOOTNOTE
+`;
+
+    const result = await parseMarkdown(source);
+
+    expect(result).toEqual(
+      Root({
+        children: [
+          Paragraph({
+            children: [FootnoteReference({ identifier: "1", label: "1" })],
+          }),
+          FootnoteDefinition({
+            identifier: "1",
+            label: "1",
+            children: [Paragraph({ children: [Text({ value: "FOOTNOTE" })] })],
           }),
         ],
       })

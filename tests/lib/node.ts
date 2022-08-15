@@ -20,6 +20,21 @@ export const Link: Builder<mdast.Link> = ({ title, url, children }) => {
   return u("link", { title, url }, children);
 };
 
+export const FootnoteReference: Builder<mdast.FootnoteReference> = ({
+  identifier,
+  label,
+}) => {
+  return u("footnoteReference", { identifier, label });
+};
+
+export const FootnoteDefinition: Builder<mdast.FootnoteDefinition> = ({
+  identifier,
+  label,
+  children,
+}) => {
+  return u("footnoteDefinition", { identifier, label }, children);
+};
+
 export const Emphasis: Builder<mdast.Emphasis> = ({ children }) => {
   return u("emphasis", children);
 };
