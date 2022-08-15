@@ -1,5 +1,5 @@
 import parseMarkdown from "../src";
-import { Emphasis, paragraph, root, Strong, text } from "./lib/node";
+import { Emphasis, Paragraph, Root, Strong, Text } from "./lib/node";
 
 describe("decoration", () => {
   it("italic", async () => {
@@ -11,13 +11,13 @@ _ITALIC_`;
     const result = await parseMarkdown(source);
 
     expect(result).toEqual(
-      root({
+      Root({
         children: [
-          paragraph({
-            children: [Emphasis({ children: [text("ITALIC")] })],
+          Paragraph({
+            children: [Emphasis({ children: [Text({ value: "ITALIC" })] })],
           }),
-          paragraph({
-            children: [Emphasis({ children: [text("ITALIC")] })],
+          Paragraph({
+            children: [Emphasis({ children: [Text({ value: "ITALIC" })] })],
           }),
         ],
       })
@@ -33,13 +33,13 @@ __BOLD__`;
     const result = await parseMarkdown(source);
 
     expect(result).toEqual(
-      root({
+      Root({
         children: [
-          paragraph({
-            children: [Strong({ children: [text("BOLD")] })],
+          Paragraph({
+            children: [Strong({ children: [Text({ value: "BOLD" })] })],
           }),
-          paragraph({
-            children: [Strong({ children: [text("BOLD")] })],
+          Paragraph({
+            children: [Strong({ children: [Text({ value: "BOLD" })] })],
           }),
         ],
       })
@@ -55,19 +55,23 @@ ___BOLD ITALIC___`;
     const result = await parseMarkdown(source);
 
     expect(result).toEqual(
-      root({
+      Root({
         children: [
-          paragraph({
+          Paragraph({
             children: [
               Emphasis({
-                children: [Strong({ children: [text("BOLD ITALIC")] })],
+                children: [
+                  Strong({ children: [Text({ value: "BOLD ITALIC" })] }),
+                ],
               }),
             ],
           }),
-          paragraph({
+          Paragraph({
             children: [
               Emphasis({
-                children: [Strong({ children: [text("BOLD ITALIC")] })],
+                children: [
+                  Strong({ children: [Text({ value: "BOLD ITALIC" })] }),
+                ],
               }),
             ],
           }),
