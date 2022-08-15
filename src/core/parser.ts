@@ -1,4 +1,5 @@
 import remarkBreaks from "remark-breaks";
+import remarkGfm from "remark-gfm";
 import remarkParse from "remark-parse";
 import { unified } from "unified";
 import { remarkFrontmatter } from "../plugin/remark-frontmatter";
@@ -10,5 +11,6 @@ export const markdownParser = unified()
   .use(remarkRemoveComments) // remove html comments
   .use(remarkFrontmatter) // parse frontmatter
   .use(remarkBreaks) // convert soft break in markdown to <br>
+  .use(remarkGfm) // github flavored markdown
   .use(remarkRemovePosition) // remove position property
   .freeze();
