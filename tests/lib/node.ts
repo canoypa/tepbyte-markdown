@@ -16,6 +16,10 @@ export const Heading: Builder<mdast.Heading> = ({ depth, children }) => {
   return u("heading", { depth }, children);
 };
 
+export const Link: Builder<mdast.Link> = ({ title, url, children }) => {
+  return u("link", { title, url }, children);
+};
+
 export const Emphasis: Builder<mdast.Emphasis> = ({ children }) => {
   return u("emphasis", children);
 };
