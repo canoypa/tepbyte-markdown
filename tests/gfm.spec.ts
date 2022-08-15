@@ -1,5 +1,3 @@
-import { hasUncaughtExceptionCaptureCallback } from "process";
-import { inspect } from "unist-util-inspect";
 import parseMarkdown from "../src";
 import {
   Break,
