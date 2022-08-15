@@ -43,6 +43,10 @@ export const Strong: Builder<mdast.Strong> = ({ children }) => {
   return u("strong", children);
 };
 
+export const Delete: Builder<mdast.Delete> = ({ children }) => {
+  return u("delete", children);
+};
+
 export const Text: Builder<mdast.Text> = ({ value }) => {
   return u("text", value);
 };
