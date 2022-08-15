@@ -1,5 +1,5 @@
 import parseMarkdown from "../src";
-import { heading, root, text } from "./lib/node";
+import { Heading, Root, Text } from "./lib/node";
 
 describe("heading", () => {
   it("basic", async () => {
@@ -14,11 +14,11 @@ describe("heading", () => {
     const result = await parseMarkdown(source);
 
     expect(result).toEqual(
-      root({
-        children: [1, 2, 3, 4, 5, 6].map((depth) =>
-          heading({
+      Root({
+        children: ([1, 2, 3, 4, 5, 6] as const).map((depth) =>
+          Heading({
             depth,
-            children: [text("HEADING")],
+            children: [Text({ value: "HEADING" })],
           })
         ),
       })

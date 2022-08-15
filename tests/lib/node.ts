@@ -1,67 +1,33 @@
-type RootProps = {
-  data?: any;
-  children: any[];
-};
-export const root = ({ data, children }: RootProps) => {
-  return {
-    type: "root",
-    data: data,
-    children,
-  };
+import type mdast from "mdast";
+import { Node } from "unist";
+import { u } from "unist-builder";
+
+type Builder<N extends Node> = (props: Omit<N, "type">) => N;
+
+export const Root: Builder<mdast.Root> = ({ data, children }) => {
+  return u("root", { data }, children);
 };
 
-type ParagraphProps = {
-  children: any[];
-};
-export const paragraph = ({ children }: ParagraphProps) => {
-  return {
-    type: "paragraph",
-    children,
-  };
+export const Paragraph: Builder<mdast.Paragraph> = ({ children }) => {
+  return u("paragraph", children);
 };
 
-type HeadingProps = {
-  depth: number;
-  children: any[];
-};
-export const heading = ({ depth, children }: HeadingProps) => {
-  return {
-    type: "heading",
-    depth,
-    children,
-  };
+export const Heading: Builder<mdast.Heading> = ({ depth, children }) => {
+  return u("heading", { depth }, children);
 };
 
-type EmphasisProps = {
-  children: any[];
-};
-export const Emphasis = ({ children }: EmphasisProps) => {
-  return {
-    type: "emphasis",
-    children,
-  };
+export const Emphasis: Builder<mdast.Emphasis> = ({ children }) => {
+  return u("emphasis", children);
 };
 
-type StrongProps = {
-  children: any[];
-};
-export const Strong = ({ children }: StrongProps) => {
-  return {
-    type: "strong",
-    children,
-  };
+export const Strong: Builder<mdast.Strong> = ({ children }) => {
+  return u("strong", children);
 };
 
-type TextProps = string;
-export const text = (value: TextProps) => {
-  return {
-    type: "text",
-    value,
-  };
+export const Text: Builder<mdast.Text> = ({ value }) => {
+  return u("text", value);
 };
 
-export const Break = () => {
-  return {
-    type: "break",
-  };
+export const Break: Builder<mdast.Break> = () => {
+  return u("break");
 };

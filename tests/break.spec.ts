@@ -1,5 +1,5 @@
 import parseMarkdown from "../src";
-import { Break, paragraph, root, text } from "./lib/node";
+import { Break, Paragraph, Root, Text } from "./lib/node";
 
 describe("break", () => {
   it("basic", async () => {
@@ -11,10 +11,10 @@ TEXT`;
     const result = await parseMarkdown(source);
 
     expect(result).toEqual(
-      root({
+      Root({
         children: [
-          paragraph({ children: [text("TEXT")] }),
-          paragraph({ children: [text("TEXT")] }),
+          Paragraph({ children: [Text({ value: "TEXT" })] }),
+          Paragraph({ children: [Text({ value: "TEXT" })] }),
         ],
       })
     );
@@ -28,10 +28,14 @@ TEXT`;
     const result = await parseMarkdown(source);
 
     expect(result).toEqual(
-      root({
+      Root({
         children: [
-          paragraph({
-            children: [text("TEXT"), Break(), text("TEXT")],
+          Paragraph({
+            children: [
+              Text({ value: "TEXT" }),
+              Break(),
+              Text({ value: "TEXT" }),
+            ],
           }),
         ],
       })
@@ -46,10 +50,14 @@ TEXT`;
     const result = await parseMarkdown(source);
 
     expect(result).toEqual(
-      root({
+      Root({
         children: [
-          paragraph({
-            children: [text("TEXT"), Break(), text("TEXT")],
+          Paragraph({
+            children: [
+              Text({ value: "TEXT" }),
+              Break(),
+              Text({ value: "TEXT" }),
+            ],
           }),
         ],
       })
