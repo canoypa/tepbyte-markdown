@@ -16,6 +16,18 @@ export const Heading: Builder<mdast.Heading> = ({ depth, children }) => {
   return u("heading", { depth }, children);
 };
 
+export const Table: Builder<mdast.Table> = ({ align, children }) => {
+  return u("table", { align }, children);
+};
+
+export const TableRow: Builder<mdast.TableRow> = ({ children }) => {
+  return u("tableRow", children);
+};
+
+export const TableCell: Builder<mdast.TableCell> = ({ children }) => {
+  return u("tableCell", children);
+};
+
 export const Link: Builder<mdast.Link> = ({ title, url, children }) => {
   return u("link", { title, url }, children);
 };

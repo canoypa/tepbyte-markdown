@@ -8,6 +8,9 @@ import {
   Link,
   Paragraph,
   Root,
+  Table,
+  TableCell,
+  TableRow,
   Text,
 } from "./lib/node";
 
@@ -83,6 +86,44 @@ www.example.com
               Delete({ children: [Text({ value: "DELETE" })] }),
               Break({}),
               Delete({ children: [Text({ value: "DELETE" })] }),
+            ],
+          }),
+        ],
+      })
+    );
+  });
+
+  it("table", async () => {
+    const source = `
+| a | b  |  c |  d  |
+| - | :- | -: | :-: |
+| A | B  |  C |  D  |
+`;
+
+    const result = await parseMarkdown(source);
+
+    expect(result).toEqual(
+      Root({
+        children: [
+          Table({
+            align: [null, "left", "right", "center"],
+            children: [
+              TableRow({
+                children: [
+                  TableCell({ children: [Text({ value: "a" })] }),
+                  TableCell({ children: [Text({ value: "b" })] }),
+                  TableCell({ children: [Text({ value: "c" })] }),
+                  TableCell({ children: [Text({ value: "d" })] }),
+                ],
+              }),
+              TableRow({
+                children: [
+                  TableCell({ children: [Text({ value: "A" })] }),
+                  TableCell({ children: [Text({ value: "B" })] }),
+                  TableCell({ children: [Text({ value: "C" })] }),
+                  TableCell({ children: [Text({ value: "D" })] }),
+                ],
+              }),
             ],
           }),
         ],
