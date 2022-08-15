@@ -1,3 +1,4 @@
+import { hasUncaughtExceptionCaptureCallback } from "process";
 import { inspect } from "unist-util-inspect";
 import parseMarkdown from "../src";
 import {
@@ -6,6 +7,8 @@ import {
   FootnoteDefinition,
   FootnoteReference,
   Link,
+  List,
+  ListItem,
   Paragraph,
   Root,
   Table,
@@ -122,6 +125,43 @@ www.example.com
                   TableCell({ children: [Text({ value: "B" })] }),
                   TableCell({ children: [Text({ value: "C" })] }),
                   TableCell({ children: [Text({ value: "D" })] }),
+                ],
+              }),
+            ],
+          }),
+        ],
+      })
+    );
+  });
+
+  it("tasklist", async () => {
+    const source = `
+- [ ] UNCHECKED
+- [x] CHECKED
+`;
+
+    const result = await parseMarkdown(source);
+
+    expect(result).toEqual(
+      Root({
+        children: [
+          List({
+            ordered: false,
+            start: null,
+            spread: false,
+            children: [
+              ListItem({
+                checked: false,
+                spread: false,
+                children: [
+                  Paragraph({ children: [Text({ value: "UNCHECKED" })] }),
+                ],
+              }),
+              ListItem({
+                checked: true,
+                spread: false,
+                children: [
+                  Paragraph({ children: [Text({ value: "CHECKED" })] }),
                 ],
               }),
             ],

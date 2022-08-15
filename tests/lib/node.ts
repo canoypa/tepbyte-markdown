@@ -28,6 +28,23 @@ export const TableCell: Builder<mdast.TableCell> = ({ children }) => {
   return u("tableCell", children);
 };
 
+export const List: Builder<mdast.List> = ({
+  ordered,
+  start,
+  spread,
+  children,
+}) => {
+  return u("list", { ordered, start, spread }, children);
+};
+
+export const ListItem: Builder<mdast.ListItem> = ({
+  spread,
+  checked,
+  children,
+}) => {
+  return u("listItem", { spread, checked }, children);
+};
+
 export const Link: Builder<mdast.Link> = ({ title, url, children }) => {
   return u("link", { title, url }, children);
 };
