@@ -1,16 +1,22 @@
-import { YAML } from "mdast";
+import { Root, YAML } from "mdast";
 import remarkFrontmatterParser from "remark-frontmatter";
 import { Plugin } from "unified";
+import { Data } from "unist";
 import { SKIP, visit } from "unist-util-visit";
 import { Visitor } from "unist-util-visit/complex-types";
 import { parse as parseYaml } from "yaml";
+
+declare module "mdast" {
+  interface Root<TData extends object = Data> {
+    frontmatter?: TData;
+  }
+}
 
 const visitor: Visitor<YAML> = (node, index, parent) => {
   const data = parseYaml(node.value);
 
   if (parent !== null && parent.type === "root") {
-    parent.data = parent.data || {};
-    parent.data.frontmatter = data;
+    (parent as Root).frontmatter = data;
   }
 
   if (index !== null && parent !== null) {

@@ -11,9 +11,7 @@ test: TEST
 
     expect(result).toEqual(
       Root({
-        data: {
-          frontmatter: { test: "TEST" },
-        },
+        frontmatter: { test: "TEST" },
         children: [],
       })
     );
