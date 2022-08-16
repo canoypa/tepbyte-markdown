@@ -18,7 +18,7 @@ const HTML_COMMENT_REGEX = /<!--([\s\S]*?)-->/g;
 const visitor: Visitor<HTML> = (node, index, parent) => {
   const isComment = node.value.match(HTML_COMMENT_REGEX);
 
-  if (isComment && index && parent) {
+  if (isComment && index !== null && parent !== null) {
     parent.children.splice(index, 1);
     return [SKIP, index];
   }
