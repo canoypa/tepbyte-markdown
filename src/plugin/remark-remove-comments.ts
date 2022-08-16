@@ -8,8 +8,9 @@
 
 // 型定義が無かったので自前で
 
-import { HTML } from "mdast";
+import { HTML, Parent } from "mdast";
 import { Plugin } from "unified";
+import { is } from "unist-util-is";
 import { SKIP, visit } from "unist-util-visit";
 import { Visitor } from "unist-util-visit/complex-types";
 
@@ -18,7 +19,11 @@ const HTML_COMMENT_REGEX = /<!--([\s\S]*?)-->/g;
 const visitor: Visitor<HTML> = (node, index, parent) => {
   const isComment = node.value.match(HTML_COMMENT_REGEX);
 
-  if (isComment && index !== null && parent !== null) {
+  if (
+    isComment &&
+    index !== null &&
+    is<Parent>(parent, (n: any): n is Parent => Array.isArray(n.children))
+  ) {
     parent.children.splice(index, 1);
     return [SKIP, index];
   }
