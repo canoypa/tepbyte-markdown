@@ -12,8 +12,8 @@ export const Paragraph: Builder<mdast.Paragraph> = ({ children }) => {
   return u("paragraph", children);
 };
 
-export const Heading: Builder<mdast.Heading> = ({ depth, children }) => {
-  return u("heading", { depth }, children);
+export const Heading: Builder<mdast.Heading> = ({ id, depth, children }) => {
+  return u("heading", { id, depth }, children);
 };
 
 export const Table: Builder<mdast.Table> = ({ align, children }) => {
