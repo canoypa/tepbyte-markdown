@@ -15,6 +15,48 @@ describe("heading", () => {
 
     expect(result).toEqual(
       Root({
+        toc: [
+          {
+            id: "h",
+            depth: 1,
+            label: "H",
+            children: [
+              {
+                id: "h-1",
+                depth: 2,
+                label: "H",
+                children: [
+                  {
+                    id: "h-2",
+                    depth: 3,
+                    label: "H",
+                    children: [
+                      {
+                        id: "h-3",
+                        depth: 4,
+                        label: "H",
+                        children: [
+                          {
+                            id: "h-4",
+                            depth: 5,
+                            label: "H",
+                            children: [
+                              {
+                                id: "h-5",
+                                depth: 6,
+                                label: "H",
+                              },
+                            ],
+                          },
+                        ],
+                      },
+                    ],
+                  },
+                ],
+              },
+            ],
+          },
+        ],
         children: [
           Heading({ id: "h", depth: 1, children: [Text({ value: "H" })] }),
           Heading({ id: "h-1", depth: 2, children: [Text({ value: "H" })] }),

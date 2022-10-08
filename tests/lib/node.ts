@@ -4,8 +4,13 @@ import { u } from "unist-builder";
 
 type Builder<N extends Node> = (props: Omit<N, "type">) => N;
 
-export const Root: Builder<mdast.Root> = ({ data, frontmatter, children }) => {
-  return u("root", { data, frontmatter }, children);
+export const Root: Builder<mdast.Root> = ({
+  data,
+  frontmatter,
+  toc,
+  children,
+}) => {
+  return u("root", { data, frontmatter, toc }, children);
 };
 
 export const Paragraph: Builder<mdast.Paragraph> = ({ children }) => {
