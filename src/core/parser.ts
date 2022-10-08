@@ -6,6 +6,7 @@ import { remarkFrontmatter } from "../plugin/remark-frontmatter";
 import { remarkRemoveComments } from "../plugin/remark-remove-comments";
 import { remarkRemovePosition } from "../plugin/remark-remove-position";
 import { remarkSlug } from "../plugin/remark-slug";
+import { remarkToc } from "../plugin/remark-toc";
 
 export const markdownParser = unified()
   .use(remarkParse) // parse markdown text to mdast
@@ -14,5 +15,6 @@ export const markdownParser = unified()
   .use(remarkBreaks) // convert soft break in markdown to <br>
   .use(remarkGfm) // github flavored markdown
   .use(remarkSlug) // add id to headings
+  .use(remarkToc) // table of contents
   .use(remarkRemovePosition) // remove position property
   .freeze();
