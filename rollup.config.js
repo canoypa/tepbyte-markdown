@@ -9,14 +9,14 @@ export default defineConfig([
     input: "src/index.ts",
     output: [
       {
-        file: "dist/index.cjs.js",
+        file: "dist/index.cjs",
         format: "cjs",
-        exports: "named",
+        exports: "default",
       },
       {
-        file: "dist/index.esm.js",
+        file: "dist/index.mjs",
         format: "esm",
-        exports: "named",
+        exports: "default",
       },
     ],
     plugins: [
