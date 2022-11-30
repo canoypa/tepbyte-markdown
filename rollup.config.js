@@ -11,12 +11,12 @@ export default defineConfig([
       {
         file: "dist/index.cjs",
         format: "cjs",
-        exports: "default",
+        exports: "named",
       },
       {
         file: "dist/index.mjs",
         format: "esm",
-        exports: "default",
+        exports: "named",
       },
     ],
     plugins: [
