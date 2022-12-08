@@ -1,4 +1,4 @@
-import parseMarkdown from "../src";
+import { parseMarkdown } from "../src";
 import { Emphasis, Paragraph, Root, Strong, Text } from "./lib/node";
 
 describe("decoration", () => {

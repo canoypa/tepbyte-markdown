@@ -1,4 +1,4 @@
-import parseMarkdown from "../src";
+import { parseMarkdown } from "../src";
 import { Paragraph, Root, Text } from "./lib/node";
 
 describe("comments", () => {

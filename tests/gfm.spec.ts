@@ -1,4 +1,4 @@
-import parseMarkdown from "../src";
+import { parseMarkdown } from "../src";
 import {
   Break,
   Delete,
