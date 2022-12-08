@@ -84,6 +84,24 @@ __BOLD__`;
     });
   });
 
+  it("code", async () => {
+    const source = `
+\`CODE\`
+`;
+
+    const result = await parseMarkdown(source);
+
+    expect(result).toEqual({
+      type: "root",
+      children: [
+        {
+          type: "paragraph",
+          children: [{ type: "inlineCode", value: "CODE" }],
+        },
+      ],
+    });
+  });
+
   it("italic bold", async () => {
     const source = `
 ***BOLD ITALIC***
