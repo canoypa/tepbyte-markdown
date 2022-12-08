@@ -1,5 +1,4 @@
 import { parseMarkdown } from "../src";
-import { Break, Paragraph, Root, Text } from "./lib/node";
 
 describe("break", () => {
   it("basic", async () => {
@@ -10,14 +9,13 @@ TEXT`;
 
     const result = await parseMarkdown(source);
 
-    expect(result).toEqual(
-      Root({
-        children: [
-          Paragraph({ children: [Text({ value: "TEXT" })] }),
-          Paragraph({ children: [Text({ value: "TEXT" })] }),
-        ],
-      })
-    );
+    expect(result).toEqual({
+      type: "root",
+      children: [
+        { type: "paragraph", children: [{ type: "text", value: "TEXT" }] },
+        { type: "paragraph", children: [{ type: "text", value: "TEXT" }] },
+      ],
+    });
   });
 
   it("break by space", async () => {
@@ -27,19 +25,19 @@ TEXT`;
 
     const result = await parseMarkdown(source);
 
-    expect(result).toEqual(
-      Root({
-        children: [
-          Paragraph({
-            children: [
-              Text({ value: "TEXT" }),
-              Break(),
-              Text({ value: "TEXT" }),
-            ],
-          }),
-        ],
-      })
-    );
+    expect(result).toEqual({
+      type: "root",
+      children: [
+        {
+          type: "paragraph",
+          children: [
+            { type: "text", value: "TEXT" },
+            { type: "break" },
+            { type: "text", value: "TEXT" },
+          ],
+        },
+      ],
+    });
   });
 
   it("soft break", async () => {
@@ -49,18 +47,18 @@ TEXT`;
 
     const result = await parseMarkdown(source);
 
-    expect(result).toEqual(
-      Root({
-        children: [
-          Paragraph({
-            children: [
-              Text({ value: "TEXT" }),
-              Break(),
-              Text({ value: "TEXT" }),
-            ],
-          }),
-        ],
-      })
-    );
+    expect(result).toEqual({
+      type: "root",
+      children: [
+        {
+          type: "paragraph",
+          children: [
+            { type: "text", value: "TEXT" },
+            { type: "break" },
+            { type: "text", value: "TEXT" },
+          ],
+        },
+      ],
+    });
   });
 });

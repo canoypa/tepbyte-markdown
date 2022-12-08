@@ -1,5 +1,4 @@
 import { parseMarkdown } from "../src";
-import { Paragraph, Root, Text } from "./lib/node";
 
 describe("comments", () => {
   it("one line", async () => {
@@ -7,15 +6,18 @@ describe("comments", () => {
 
     const result = await parseMarkdown(source);
 
-    expect(result).toEqual(
-      Root({
-        children: [
-          Paragraph({
-            children: [Text({ value: "Hello" }), Text({ value: "World" })],
-          }),
-        ],
-      })
-    );
+    expect(result).toEqual({
+      type: "root",
+      children: [
+        {
+          type: "paragraph",
+          children: [
+            { type: "text", value: "Hello" },
+            { type: "text", value: "World" },
+          ],
+        },
+      ],
+    });
   });
 
   it("multi line", async () => {
@@ -28,13 +30,12 @@ World`;
 
     const result = await parseMarkdown(source);
 
-    expect(result).toEqual(
-      Root({
-        children: [
-          Paragraph({ children: [Text({ value: "Hello" })] }),
-          Paragraph({ children: [Text({ value: "World" })] }),
-        ],
-      })
-    );
+    expect(result).toEqual({
+      type: "root",
+      children: [
+        { type: "paragraph", children: [{ type: "text", value: "Hello" }] },
+        { type: "paragraph", children: [{ type: "text", value: "World" }] },
+      ],
+    });
   });
 });

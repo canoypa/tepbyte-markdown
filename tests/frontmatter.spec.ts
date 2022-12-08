@@ -1,5 +1,4 @@
 import { parseMarkdown } from "../src";
-import { Root } from "./lib/node";
 
 describe("frontmatter", () => {
   it("frontmatter", async () => {
@@ -9,11 +8,10 @@ test: TEST
 
     const result = await parseMarkdown(source);
 
-    expect(result).toEqual(
-      Root({
-        frontmatter: { test: "TEST" },
-        children: [],
-      })
-    );
+    expect(result).toEqual({
+      type: "root",
+      frontmatter: { test: "TEST" },
+      children: expect.anything(),
+    });
   });
 });
