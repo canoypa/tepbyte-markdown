@@ -2,6 +2,7 @@ import remarkBreaks from "remark-breaks";
 import remarkGfm from "remark-gfm";
 import remarkParse from "remark-parse";
 import { unified } from "unified";
+import { compiler } from "../plugin/compiler";
 import { remarkFrontmatter } from "../plugin/remark-frontmatter";
 import { remarkRemoveComments } from "../plugin/remark-remove-comments";
 import { remarkRemovePosition } from "../plugin/remark-remove-position";
@@ -17,4 +18,5 @@ export const markdownParser = unified()
   .use(remarkSlug) // add id to headings
   .use(remarkToc) // table of contents
   .use(remarkRemovePosition) // remove position property
+  .use(compiler) // compiler need to be implemented
   .freeze();
