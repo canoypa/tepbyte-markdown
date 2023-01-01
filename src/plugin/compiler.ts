@@ -1,12 +1,8 @@
+import { Root } from "mdast";
 import { Compiler, Processor } from "unified";
+import { Node } from "unist";
 
-const compile: Compiler = (node, file) => {
-  // Set parse result to "result"
-  file.result = node;
-
-  // Return stringified results (but not used).
-  return "";
-};
+const compile: Compiler<Node, Root> = (node) => node;
 
 export function compiler(this: Processor) {
   this.Compiler = compile;
