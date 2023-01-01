@@ -1,4 +1,4 @@
-import { parseMarkdown } from "../src";
+import { markdownProcessor } from "../src";
 
 describe("break", () => {
   it("basic", async () => {
@@ -7,7 +7,7 @@ TEXT
 
 TEXT`;
 
-    const result = await parseMarkdown(source);
+    const result = await markdownProcessor().parse(source);
 
     expect(result).toEqual({
       type: "root",
@@ -23,7 +23,7 @@ TEXT`;
 TEXT  
 TEXT`;
 
-    const result = await parseMarkdown(source);
+    const result = await markdownProcessor().parse(source);
 
     expect(result).toEqual({
       type: "root",
@@ -45,7 +45,7 @@ TEXT`;
 TEXT
 TEXT`;
 
-    const result = await parseMarkdown(source);
+    const result = await markdownProcessor().parse(source);
 
     expect(result).toEqual({
       type: "root",

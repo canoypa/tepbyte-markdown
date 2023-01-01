@@ -1,4 +1,4 @@
-import { parseMarkdown } from "../src";
+import { markdownProcessor } from "../src";
 
 describe("frontmatter", () => {
   it("frontmatter", async () => {
@@ -6,7 +6,7 @@ describe("frontmatter", () => {
 test: TEST
 ---`;
 
-    const result = await parseMarkdown(source);
+    const result = await markdownProcessor().parse(source);
 
     expect(result).toEqual({
       type: "root",
