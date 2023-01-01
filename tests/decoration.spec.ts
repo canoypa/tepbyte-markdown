@@ -1,5 +1,4 @@
-import parseMarkdown from "../src";
-import { Emphasis, Paragraph, Root, Strong, Text } from "./lib/node";
+import { parseMarkdown } from "../src";
 
 describe("decoration", () => {
   it("italic", async () => {
@@ -10,18 +9,29 @@ _ITALIC_`;
 
     const result = await parseMarkdown(source);
 
-    expect(result).toEqual(
-      Root({
-        children: [
-          Paragraph({
-            children: [Emphasis({ children: [Text({ value: "ITALIC" })] })],
-          }),
-          Paragraph({
-            children: [Emphasis({ children: [Text({ value: "ITALIC" })] })],
-          }),
-        ],
-      })
-    );
+    expect(result).toEqual({
+      type: "root",
+      children: [
+        {
+          type: "paragraph",
+          children: [
+            {
+              type: "emphasis",
+              children: [{ type: "text", value: "ITALIC" }],
+            },
+          ],
+        },
+        {
+          type: "paragraph",
+          children: [
+            {
+              type: "emphasis",
+              children: [{ type: "text", value: "ITALIC" }],
+            },
+          ],
+        },
+      ],
+    });
   });
 
   it("bold", async () => {
@@ -32,18 +42,64 @@ __BOLD__`;
 
     const result = await parseMarkdown(source);
 
-    expect(result).toEqual(
-      Root({
-        children: [
-          Paragraph({
-            children: [Strong({ children: [Text({ value: "BOLD" })] })],
-          }),
-          Paragraph({
-            children: [Strong({ children: [Text({ value: "BOLD" })] })],
-          }),
-        ],
-      })
-    );
+    expect(result).toEqual({
+      type: "root",
+      children: [
+        {
+          type: "paragraph",
+          children: [
+            { type: "strong", children: [{ type: "text", value: "BOLD" }] },
+          ],
+        },
+        {
+          type: "paragraph",
+          children: [
+            { type: "strong", children: [{ type: "text", value: "BOLD" }] },
+          ],
+        },
+      ],
+    });
+  });
+
+  it("delete", async () => {
+    const source = `
+~DELETE~
+~~DELETE~~
+`;
+
+    const result = await parseMarkdown(source);
+
+    expect(result).toEqual({
+      type: "root",
+      children: [
+        {
+          type: "paragraph",
+          children: [
+            { type: "delete", children: [{ type: "text", value: "DELETE" }] },
+            { type: "break" },
+            { type: "delete", children: [{ type: "text", value: "DELETE" }] },
+          ],
+        },
+      ],
+    });
+  });
+
+  it("code", async () => {
+    const source = `
+\`CODE\`
+`;
+
+    const result = await parseMarkdown(source);
+
+    expect(result).toEqual({
+      type: "root",
+      children: [
+        {
+          type: "paragraph",
+          children: [{ type: "inlineCode", value: "CODE" }],
+        },
+      ],
+    });
   });
 
   it("italic bold", async () => {
@@ -54,29 +110,38 @@ ___BOLD ITALIC___`;
 
     const result = await parseMarkdown(source);
 
-    expect(result).toEqual(
-      Root({
-        children: [
-          Paragraph({
-            children: [
-              Emphasis({
-                children: [
-                  Strong({ children: [Text({ value: "BOLD ITALIC" })] }),
-                ],
-              }),
-            ],
-          }),
-          Paragraph({
-            children: [
-              Emphasis({
-                children: [
-                  Strong({ children: [Text({ value: "BOLD ITALIC" })] }),
-                ],
-              }),
-            ],
-          }),
-        ],
-      })
-    );
+    expect(result).toEqual({
+      type: "root",
+      children: [
+        {
+          type: "paragraph",
+          children: [
+            {
+              type: "emphasis",
+              children: [
+                {
+                  type: "strong",
+                  children: [{ type: "text", value: "BOLD ITALIC" }],
+                },
+              ],
+            },
+          ],
+        },
+        {
+          type: "paragraph",
+          children: [
+            {
+              type: "emphasis",
+              children: [
+                {
+                  type: "strong",
+                  children: [{ type: "text", value: "BOLD ITALIC" }],
+                },
+              ],
+            },
+          ],
+        },
+      ],
+    });
   });
 });
