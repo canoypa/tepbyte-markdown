@@ -1,3 +1,3 @@
-import { parseMarkdown } from "./core/parse";
+import { markdownProcessor } from "./core/processor";
 
-export { parseMarkdown };
+export { markdownProcessor };
