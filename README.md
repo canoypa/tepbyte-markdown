@@ -3,8 +3,9 @@
 ## Usage
 
 ```javascript
-import parseMarkdown from "tepbyte-markdown";
-await parseMarkdown("# Hello World");
+import { markdownProcessor } from "tepbyte-markdown";
+
+await markdownProcessor().parse("# Hello World");
 ```
 
 Result:
