@@ -1,4 +1,4 @@
-import { parseMarkdown } from "../src";
+import { markdownProcessor } from "../src";
 
 describe("toc", () => {
   it("basic", async () => {
@@ -8,7 +8,7 @@ describe("toc", () => {
 ### h3
 `;
 
-    const result = await parseMarkdown(source);
+    const result = await markdownProcessor().parse(source);
 
     expect(result).toEqual({
       type: "root",
@@ -43,7 +43,7 @@ describe("toc", () => {
 ### h3
 # h1`;
 
-    const result = await parseMarkdown(source);
+    const result = await markdownProcessor().parse(source);
 
     expect(result).toEqual({
       type: "root",
