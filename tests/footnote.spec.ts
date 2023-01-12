@@ -1,4 +1,4 @@
-import { parseMarkdown } from "../src";
+import { markdownProcessor } from "../src";
 
 describe("footnote", () => {
   it("footnote", async () => {
@@ -7,7 +7,7 @@ describe("footnote", () => {
 [^1]: FOOTNOTE
 `;
 
-    const result = await parseMarkdown(source);
+    const result = await markdownProcessor().parse(source);
 
     expect(result).toEqual({
       type: "root",

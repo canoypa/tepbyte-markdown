@@ -1,4 +1,4 @@
-import { parseMarkdown } from "../src";
+import { markdownProcessor } from "../src";
 
 describe("link", () => {
   it("autolink", async () => {
@@ -7,7 +7,7 @@ https://example.com
 www.example.com
 `;
 
-    const result = await parseMarkdown(source);
+    const result = await markdownProcessor().parse(source);
 
     expect(result).toEqual({
       type: "root",

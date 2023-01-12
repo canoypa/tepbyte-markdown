@@ -1,4 +1,4 @@
-import { parseMarkdown } from "../src";
+import { markdownProcessor } from "../src";
 
 describe("decoration", () => {
   it("italic", async () => {
@@ -7,7 +7,7 @@ describe("decoration", () => {
 
 _ITALIC_`;
 
-    const result = await parseMarkdown(source);
+    const result = await markdownProcessor().parse(source);
 
     expect(result).toEqual({
       type: "root",
@@ -40,7 +40,7 @@ _ITALIC_`;
 
 __BOLD__`;
 
-    const result = await parseMarkdown(source);
+    const result = await markdownProcessor().parse(source);
 
     expect(result).toEqual({
       type: "root",
@@ -67,7 +67,7 @@ __BOLD__`;
 ~~DELETE~~
 `;
 
-    const result = await parseMarkdown(source);
+    const result = await markdownProcessor().parse(source);
 
     expect(result).toEqual({
       type: "root",
@@ -89,7 +89,7 @@ __BOLD__`;
 \`CODE\`
 `;
 
-    const result = await parseMarkdown(source);
+    const result = await markdownProcessor().parse(source);
 
     expect(result).toEqual({
       type: "root",
@@ -108,7 +108,7 @@ __BOLD__`;
 
 ___BOLD ITALIC___`;
 
-    const result = await parseMarkdown(source);
+    const result = await markdownProcessor().parse(source);
 
     expect(result).toEqual({
       type: "root",

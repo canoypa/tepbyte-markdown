@@ -1,10 +1,10 @@
-import { parseMarkdown } from "../src";
+import { markdownProcessor } from "../src";
 
 describe("comments", () => {
   it("one line", async () => {
     const source = `Hello<!--Comment-->World`;
 
-    const result = await parseMarkdown(source);
+    const result = await markdownProcessor().parse(source);
 
     expect(result).toEqual({
       type: "root",
@@ -28,7 +28,7 @@ Comment
 -->
 World`;
 
-    const result = await parseMarkdown(source);
+    const result = await markdownProcessor().parse(source);
 
     expect(result).toEqual({
       type: "root",
