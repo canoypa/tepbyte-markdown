@@ -1,3 +1,1 @@
-import { markdownProcessor } from "./core/processor";
-
-export { markdownProcessor };
+export { markdownProcessor } from "./core/processor";
