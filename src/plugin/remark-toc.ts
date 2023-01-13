@@ -5,19 +5,7 @@ import { Node } from "unist";
 import { is } from "unist-util-is";
 import { visit } from "unist-util-visit";
 import { Visitor } from "unist-util-visit/complex-types";
-
-declare module "mdast" {
-  interface Root {
-    toc?: TocItem[];
-  }
-}
-
-export type TocItem = {
-  id: string;
-  depth: number;
-  label: string;
-  children?: TocItem[];
-};
+import { TocItem } from "../types";
 
 const getToc = (tree: Node): TocItem[] | null => {
   const toc: TocItem[] = [];

@@ -6,12 +6,6 @@ import { SKIP, visit } from "unist-util-visit";
 import { Visitor } from "unist-util-visit/complex-types";
 import { parse as parseYaml } from "yaml";
 
-declare module "mdast" {
-  interface Root {
-    frontmatter?: Record<string, unknown>;
-  }
-}
-
 const visitor: Visitor<YAML> = (node, index, parent) => {
   const data = parseYaml(node.value);
 

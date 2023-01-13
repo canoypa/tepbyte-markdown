@@ -3,18 +3,12 @@
  * MIT License | github.com/remarkjs/remark-slug/blob/main/license
  */
 
+import Slugger from "github-slugger";
+import { Heading } from "mdast";
 import { toString } from "mdast-util-to-string";
+import { Plugin } from "unified";
 import { visit } from "unist-util-visit";
 import { Visitor } from "unist-util-visit/complex-types";
-import Slugger from "github-slugger";
-import { Plugin } from "unified";
-import { Heading } from "mdast";
-
-declare module "mdast" {
-  interface Heading {
-    id: string;
-  }
-}
 
 const slugger = new Slugger();
 
