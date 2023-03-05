@@ -1,3 +1,6 @@
+import { Literal } from "mdast";
+import { Parent } from "unist";
+
 export type TocItem = {
   id: string;
   depth: number;
@@ -14,6 +17,19 @@ declare module "mdast" {
   interface Heading {
     id: string;
   }
+}
+
+export interface Code extends Parent<RichText> {
+  type: "code";
+  lang?: string | null;
+  filename?: string | null;
+  foregroundColor: string;
+  backgroundColor: string;
+}
+
+export interface RichText extends Literal {
+  type: "richText";
+  color?: string;
 }
 
 export type { Root } from "mdast";
