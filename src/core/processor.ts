@@ -4,6 +4,7 @@ import remarkGfm from "remark-gfm";
 import remarkParse from "remark-parse";
 import { Processor, unified } from "unified";
 import { compiler } from "../plugin/compiler";
+import { pluginMedia } from "../plugin/media";
 import { remarkFrontmatter } from "../plugin/remark-frontmatter";
 import { remarkRemoveComments } from "../plugin/remark-remove-comments";
 import { remarkRemovePosition } from "../plugin/remark-remove-position";
@@ -19,6 +20,7 @@ export const markdownProcessor = () => {
     .use(remarkGfm) // github flavored markdown
     .use(remarkSlug) // add id to headings
     .use(remarkToc) // table of contents
+    .use(pluginMedia) // add audio, video node
     .use(remarkRemovePosition) // remove position property
     .use(compiler); // compiler need to be implemented
 
