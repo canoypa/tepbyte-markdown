@@ -1,18 +1,22 @@
 {
-  "type": "module",
   "name": "tepbyte-markdown",
   "version": "0.1.4",
   "main": "dist/index.cjs",
   "module": "dist/index.mjs",
   "types": "dist/index.d.ts",
   "exports": {
-    "import": "./dist/index.mjs",
-    "require": "./dist/index.cjs",
-    "types": "./dist/index.d.ts"
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.mjs",
+      "require": "./dist/index.cjs"
+    }
   },
+  "files": [
+    "/dist/**"
+  ],
   "packageManager": "pnpm@8.6.2",
   "scripts": {
-    "build": "rollup --config rollup.config.js",
+    "build": "rollup --config rollup.config.mjs",
     "lint": "eslint .",
     "test": "jest",
     "prepublishOnly": "pnpm run build"
